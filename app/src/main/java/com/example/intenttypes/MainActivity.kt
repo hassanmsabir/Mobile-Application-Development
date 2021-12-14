@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val alarmBtn = findViewById<Button>(R.id.alarmBtn)
 
         alarmBtn.setOnClickListener(){
@@ -41,5 +42,5 @@ class MainActivity : AppCompatActivity() {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
+
     }
-}
