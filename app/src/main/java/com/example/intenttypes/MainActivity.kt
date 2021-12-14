@@ -13,6 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var eml =findViewById<Button>(R.id.email)
+
+         eml.setOnClickListener {
+            sendemail()
+        }
+
 
         val alarmBtn = findViewById<Button>(R.id.alarmBtn)
 
@@ -32,6 +38,20 @@ class MainActivity : AppCompatActivity() {
             this.createAlarm(messageText, hours, minutes)
     }
     }
+      private fun sendemail() {
+        var emil = arrayOf("Nabeel2525.na@gmail.com")
+        var subject = "subjectname"
+        var body = "txtmessage"
+        var ei = Intent()
+        ei.setAction(Intent.ACTION_SEND)
+        ei.setType("message/rfc822")
+        ei.putExtra(Intent.EXTRA_EMAIL,emil)
+        ei.putExtra(Intent.EXTRA_SUBJECT,subject)
+        ei.putExtra(Intent.EXTRA_TEXT,body)
+        startActivity(ei)
+        Toast.makeText(this, "open the email ", Toast.LENGTH_SHORT).show()
+
+    }
 
     fun createAlarm(message: String, hour: Int, minutes: Int) {
         val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
@@ -42,5 +62,6 @@ class MainActivity : AppCompatActivity() {
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
+
 
     }
